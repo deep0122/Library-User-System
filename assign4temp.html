@@ -1,0 +1,46 @@
+<?php
+    include "header.php";
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="assign4temp.css">
+</head>
+<body>
+    <script>
+        function query(q){
+            var info = document.getElementById("info").value;
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    console.log(this.responseText);
+                    if(this.responseText == "Error"){
+                        if(q.id == "1"){
+                            alert("WIP");
+                        }else if(q.id == "2"){
+                            alert("No books match your search. \nAn order has been put through");
+                        }else if(q.id == "3"){ 
+                            alert("You haven't checked out this book yet!");
+                        }
+                    }else{
+                        document.getElementById("table").innerHTML = this.responseText;
+                    }
+                }
+            }
+            xhttp.open("GET","assign4.php?action="+q.id+"&info="+info, true);
+            xhttp.send();
+        }
+    </script>
+    <form>
+        <div id="one">
+            <button id="1" onclick="query(this); return false;">Show Records</button>
+        </div>
+        <div id="two">
+            <input type="text" id="info">
+            <button id="2" onclick="query(this); return false">Search Book</button>
+            <button id="3" onclick="query(this); return false">Return Book</button>
+        </div>
+    </form>
+    <div id="table"></div>
+</body>
+</html>

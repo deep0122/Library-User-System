@@ -1,0 +1,49 @@
+body{
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    border: solid black;
+    border-width: 1px;
+    box-sizing: border-box;
+    width: 400px;
+}
+
+h2{
+    margin-top: 0px;
+    background-color: #d0e5ac;
+}
+
+form{
+    display: block;
+    font-size: 16px;
+}
+
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    text-align: right;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+input[name=l]{
+    margin-top: 30px;
+    width: 40%;
+    font-size: 14px;
+    border: solid thin gray;
+}
+
+input[name=i]{
+    display: inline-block;
+    margin-right: 25px;
+    float: right;
+    width: 40%;
+    border:solid thin gray;
+}
+
+#output{
+    color: red;
+}

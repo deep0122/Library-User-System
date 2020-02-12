@@ -1,0 +1,55 @@
+body{
+	margin: 0 auto;
+	width: 10%;
+	transform: translate(5%,0%);
+}
+
+p{
+	white-space: nowrap;
+	font-size: 22px;
+	padding-top: 10px;
+	transform: translate(-20%,0%);
+}
+
+button,select{
+	height: 30px;
+	width: 100%;
+	margin-top: 5px;
+    font-size: 13px;
+	
+}
+
+form{
+	margin-top: 5px;
+	margin-bottom: 30px;
+}
+
+table{
+	width: 400px;
+	transform: translate(-39%,0%);
+	border-collapse: collapse;
+}
+
+tr:nth-child(even){
+	background: #CCC;
+}
+
+tr:nth-child(odd){
+	background: #FFF;
+}
+
+table td {
+   	border: 5px solid black;
+    border-width: 1.5px;	
+	padding: 10px;
+}
+
+table th{
+    border: 5px solid black;
+    border-width: 1.5px;
+
+}
+
+#one{
+    margin-bottom: 35px;
+}

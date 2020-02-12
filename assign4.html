@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="assign4.css">
+</head>
+<body>
+    <h2>Library User System</h2>
+	<form name="login">
+		<label>Patron Name:</label><input type="text" id="name" name="i"><br>
+		<label>Patron Card Number:</label><input type="password"id="card" name="i"><br>
+        <label>Email:</label><input type="text" id="email" name="i"><br>
+		<input type="button" value="Log In" id="button" onclick="validate(this)" name="l">
+        <input type="button" value="Create Account" id="cbutton" onclick="validate(this)" name="l">
+	</form>
+	<p id="output"></p>
+	<script>
+		function validate(q){
+			var output = "";
+			var name = document.getElementById("name").value;
+			var card = document.getElementById("card").value;
+            var email = document.getElementById("email").value;
+			if(name == ""){
+				output += "Patron Name is empty.<br>";
+			}
+			if(card == ""){
+				output += "Patron Card Number is empty.<br>";
+			}else if(card.length != 8 || !isNaN(card.value)){
+				output += "Patron Card Number must be 8 numbers.<br>";
+			}
+			if(output == "" && q.id == "button"){
+				verify();
+            }else if(output == "" && q.id == "cbutton"){
+                var action = 4;
+                var info = name + "," + card + "," + email;
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if(this.readyState == 4 && this.status == 200){
+                        console.log("RS:"+this.responseText);
+                        if(this.responseText = "SUCCESS"){
+                            location = "https://web.njit.edu/~dsp49/assign4temp.html";
+                        }
+                    }
+                };
+                xhttp.open("GET","assign4.php?action="+action+"&info="+info,true);
+                xhttp.send();
+               
+
+			}else{
+				document.getElementById("output").innerHTML = output;
+			}
+		}
+
+		function verify(){
+			var user = document.getElementById("name").value;
+			var card = document.getElementById("card").value;
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status == 200){
+					if(this.responseText == "True"){
+						location = "https://web.njit.edu/~dsp49/assign4temp.html";
+					}else{
+						document.getElementById("output").innerHTML = "The Name or Card Number you entered was incorrect.";
+					}
+				}
+			};
+			xhttp.open("POST","verify.php",true);
+			xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");	
+			xhttp.send("user="+user+"&card="+card);
+		}
+	</script>
+</body>
+</html>
