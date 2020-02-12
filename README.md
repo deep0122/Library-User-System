@@ -13,5 +13,4 @@ Card: 11660469
 Others can be found in Patrons csv file
 
 
-![Image of Assignment]
-(https://ibb.co/p3S4TY2)
+![Image of Assignment](https://ibb.co/p3S4TY2)
